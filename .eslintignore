@@ -1,3 +1,8 @@
-webpack/*
-karma.conf.js
-tests.webpack.js
+package.json
+html.js
+gatsby-node.js
+vendor
+public
+
+css/
+node_modules/
