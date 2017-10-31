@@ -16,6 +16,7 @@
     "gatsby-remark-external-links": "^0.0.3",
     "gatsby-remark-prismjs": "^1.2.8",
     "gatsby-transformer-sharp": "^1.6.13",
+    "gatsby-transformer-yaml": "^1.5.11",
     "node-sass": "^4.0.0",
     "normalize.css": "^7.0.0",
     "prismjs": "^1.8.1",

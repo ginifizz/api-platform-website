@@ -1,0 +1,190 @@
+- title: Distribution
+  path: distribution
+  items:
+    - id: index
+      title: Creating a Fully Featured API in 5 Minutes
+    - id: testing
+      title: Testing and Specifiying the API
+- title: The API Component
+  path: core
+  items:
+    - id: index
+      title: Introduction
+    - id: getting-started
+      title: Getting started
+      anchors:
+        - id: installing-api-platform-core
+          title: Installing API Platform Core
+        - id: before-reading-this-documentation
+          title: Before reading this documentation
+        - id: mapping-the-entities
+          title: Mapping the entities
+    - id: configuration
+      title: Configuration
+    - id: operations
+      title: Operations
+      anchors:
+        - id: enabling-and-disabling-operations
+          title: Enabling and disabling operations
+        - id: configuring-operations
+          title: Configuring operations
+        - id: subresources
+          title: Subresources
+        - id: creating-custom-operations-and-controllers
+          title: Creating custom operations and controllers
+    - id: default-order
+      title: Overriding default order
+    - id: filters
+      title: Filters
+      anchors:
+        - id: doctrine-orm-filters
+          title: Doctrine ORM filters
+        - id: serializer-filters
+          title: Serializer filters
+        - id: creating-custom-filters
+          title: Creating custom filters
+    - id: serialization-groups-and-relations
+      title: Serialization groups and relations
+      anchors:
+        - id: configuration
+          title: Configuration
+        - id: using-different-serialization-groups-per-operation
+          title: Using different serialization groups per operation
+        - id: embedding-relations
+          title: Embedding relations
+        - id: changing-the-serialization-context-dynamically
+          title: Changing the serialization context dynamically
+        - id: name-conversion
+          title: Name conversion
+        - id: entity-identifier-case
+          title: Entity identifier case
+        - id: embedding-the-context
+          title: Embedding the context
+    - id: validation
+      title: Validation
+      anchors:
+        - id: using-validation-groups
+          title: Using validation groups
+        - id: dynamic-validation-groups
+          title: Dynamic validation groups
+    - id: pagination
+      title: Pagination
+      anchors:
+        - id: disabling-the-pagination
+          title: Disabling the pagination
+        - id: changing-the-number-of-items-per-page
+          title: Changing the number of items per page
+    - id: events
+      title: The event system
+    - id: content-negotiation
+      title: Content negotiation
+      anchors:
+        - id: enabling-several-formats
+          title: Enabling several formats
+        - id: registering-a-custom-serializer
+          title: Registering a custom serializer
+        - id: creating-a-responder
+          title: Creating a responder
+        - id: wrinting-a-custom-normalizer
+          title: Criting a custom normalizer
+    - id: external-vocabularies
+      title: External vocabularies
+    - id: extending-jsonld-context
+      title: Extending JSON-LD context
+    - id: data-providers
+      title: Data providers
+      anchors:
+        - id: custom-collection-data-provider
+          title: Custom Collection Data Provider
+        - id: custom-item-data-provider
+          title: Custom item data provider
+    - id: extensions
+      title: Extensions
+    - id: security
+      title: Security
+    - id: performance
+      title: Performance
+      anchors:
+        - id: enabling-the-builtin-http-cache-invalidation-system
+          title: Enabling the Builtin HTTP Cache Invalidation System
+        - id: enabling-the-metadata-cache
+          title: Enabling the metadata cache
+        - id: using-ppm-php-pm
+          title: Using PPM (PHP-PM)
+        - id: doctrine-queries-and-indexes
+          title: Doctrine queries and indexes
+    - id: operation-path-naming
+      title: Operation path naming
+      anchors:
+        - id: configuration
+          title: configuration
+        - id: create-a-custom-operation-path-resolver
+          title: Create a Custom Operation Path Resolver
+    - id: form-data
+      title: Accept Form Data
+    - id: jwt
+      title: JWT Authentification
+    - id: nelmio-api-doc
+      title: NelmioApiDocBundle Integration
+    - id: angularjs-integration
+      title: AngularJS integration
+    - id: swagger
+      title: Swagger support
+    - id: serialization
+      title: The serialization process
+- title: The Schema generator component
+  path: schema-generator
+  items:
+    - id: index
+      title: Introduction
+    - id: getting-started
+      title: Getting started
+    - id: configuration
+      title: Configuration
+- title: The Admin component
+  path: admin
+  items:
+    - id: index
+      title: Introduction
+    - id: getting-started
+      title: Getting started
+      anchors:
+        - id: installation
+          title: Installation
+        - id: creating-the-admin
+          title: Creating the admin
+        - id: customizing-the-admin
+          title: Customizing the admin
+    - id: authentication-support
+      title: Authentication support
+    - id: handling-relations-to-collections
+      title: Handling relations to collections
+- title: The Client generator component
+  path: client-generator
+  items:
+    - id: index
+      title: Introduction
+    - id: react
+      title: React generator
+    - id: vuejs
+      title: Vue.js generator
+    - id: troubleshooting
+      title: Troubleshooting
+- title: Deployment
+  path: deployment
+  items:
+    - id: index
+      title: Introduction
+    - id: heroku
+      title: Deploying an API Platform App on Heroku
+    - id: docker
+      title: Using API Platform with Docker
+- title: Extra
+  path: extra
+  items:
+    - id: philosophy
+      title: Philosophy
+    - id: troubleshooting
+      title: Troubleshooting
+    - id: conduct
+      title: Contributor code of conduct

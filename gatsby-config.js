@@ -120,6 +120,7 @@ module.exports = {
       },
     },
     'gatsby-transformer-sharp',
+    'gatsby-transformer-yaml',
     {
       resolve: 'gatsby-transformer-remark',
       options: {

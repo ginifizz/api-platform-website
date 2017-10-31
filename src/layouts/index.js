@@ -5,6 +5,7 @@ import Helmet from 'react-helmet';
 import Header from 'components/layout/Header';
 import BurgerButton from 'components/layout/BurgerButton';
 import DocMenu from 'components/layout/DocMenu';
+import DocNav from 'components/layout/DocNav';
 import Footer from 'components/layout/Footer';
 import SideMenu from 'components/layout/SideMenu';
 import 'styles/main.scss';
@@ -43,7 +44,7 @@ class TemplateWrapper extends Component {
           <Header />
           <div className="page openable">{children()}</div>
           {-1 === location.pathname.search('/docs') && <Footer />}
-          {-1 !== location.pathname.search('/docs') && <DocMenu index={data.indexDoc} />}
+          {-1 !== location.pathname.search('/docs') && <DocNav nav={data.navDoc.edges} />}
         </div>
         <BurgerButton
           onClick={this.showMenu.bind(null, !open)}
@@ -61,6 +62,22 @@ export const pageQuery = graphql`
   query LayoutIndexQuery {
     indexDoc: markdownRemark(fields: { path: { eq: "docs/index" } }) {
       html
+    }
+    navDoc: allNavYaml {
+      edges {
+        node {
+          title
+          path
+          items {
+            id
+            title
+            anchors {
+              id
+              title
+            }
+          }
+        }
+      }
     }
   }
 `;

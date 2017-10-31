@@ -57,6 +57,11 @@
       }
     }
 
+    .menu-item__link {
+      display: block;
+      padding: 5px 0 5px 10px;
+    }
+
     ol {
       display: inline-block;
       width: 100%;
