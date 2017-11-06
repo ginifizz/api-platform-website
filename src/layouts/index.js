@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import Header from 'components/layout/Header';
 import BurgerButton from 'components/layout/BurgerButton';
-import DocMenu from 'components/layout/DocMenu';
 import DocNav from 'components/layout/DocNav';
 import Footer from 'components/layout/Footer';
 import SideMenu from 'components/layout/SideMenu';

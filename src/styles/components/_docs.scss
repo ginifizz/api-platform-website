@@ -28,13 +28,11 @@
   padding: 20px 0;
 
   .menu__item {
-    margin: 0;
     padding: 10px 20px;
     border-bottom: 1px solid rgba($white, 0.1);
     transition: all ease .5s;
 
     .item__title {
-      position: relative;
       cursor: pointer;
       transition: all ease .3s;
 
@@ -57,15 +55,58 @@
       }
     }
 
-    .menu-item__link {
-      display: block;
-      padding: 5px 0 5px 10px;
+    .menu-item__list {
+      margin: 0;
+      padding: 10px 0;
+      font-size: 1.5rem;
     }
 
-    ol {
-      display: inline-block;
-      width: 100%;
-      margin: 0;
+    .menu-item__link {
+      & > a,
+      .submenu__item > span a {
+        padding-right: 20px;
+        display: block;
+      }
+
+      &.active {
+        color: $white;
+
+        & > a,
+        .submenu__item > span a {
+          font-weight: $bold;
+          padding-right: 0;
+          border-left: 3px solid $lightblue;
+          padding-left: 5px;
+        }
+      }
+    }
+
+    .menu-item__link,
+    .submenu-item__link {
+      padding: 8px 5px;
+      color: rgba($white, 0.8);
+
+      &:last-of-type {
+        padding-bottom: 0;
+      }
+
+      a {
+        font-weight: $normal;
+        font-size: inherit;
+        color: inherit;
+        transition: color ease .5s;
+      }
+
+      .submenu__item ul {
+        padding: 5px;
+        font-size: 1.3rem;
+      }
+
+      .submenu-item__link.current a {
+        color: $white;
+        font-weight: $bold;
+        border-bottom: 1px dotted $lightblue;
+      }
     }
 
     &.open {
@@ -80,34 +121,8 @@
 
       h2 {
         color: $clearblue;
-
-      }
-
-      a {
-        color: $white;
       }
     }
-  }
-
-  a {
-    font-weight: $normal;
-    font-size: 1.5rem;
-    color: $white;
-    transition: color ease .5s;
-
-    &:not(.active)~ol {
-      display: none;
-    }
-
-    &.active {
-      font-weight: $bold;
-    }
-  }
-
-  li {
-    padding-left: 10px;
-    margin: 5px 0;
-
   }
   @include mq($max-width: $vw-medium) {
     display: none;
