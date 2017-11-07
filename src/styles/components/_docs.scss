@@ -214,3 +214,56 @@
     padding: 30px;
   }
 }
+
+.docs__nav {
+  @include z-depth-1;
+  background-color: $lightgrey;
+  padding: 15px 10px;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-weight: $normal;
+
+  .next,
+  .prev {
+    max-width: 50%;
+    display: flex;
+    align-items: center;
+
+    span:before {
+      color: $black;
+      font-weight: $normal;
+    }
+
+    i {
+      color: $blue;
+      font-size: 2.6rem;
+      transition: all ease .3s;
+    }
+  }
+
+  .prev {
+    margin-right: auto;
+
+    span:before {
+      content: "Previous chapter : ";
+    }
+
+    &:hover i {
+      transform: translateX(-5px);
+    }
+  }
+
+  .next {
+    margin-left: auto;
+
+    span:before {
+      content: "Next chapter : ";
+    }
+
+    &:hover i {
+      transform: translateX(5px);
+    }
+  }
+}

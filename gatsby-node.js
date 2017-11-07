@@ -6,33 +6,70 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
 
   const docTemplate = path.resolve('src/templates/doc.js');
 
-  return graphql(`
-    {
-      allMarkdownRemark(sort: { order: DESC, fields: [fields___path] }, limit: 1000) {
-        edges {
-          node {
-            fields {
+  const navQuery = Promise.resolve(graphql(`
+      {
+        allNavYaml {
+          edges {
+            node {
+              title
+              id
               path
+              items {
+                id
+                title
+              }
             }
-            excerpt(pruneLength: 250)
-            html
-            id
           }
         }
       }
-    }
-  `).then((result) => {
-    if (result.errors) {
-      return Promise.reject(result.errors);
-    }
+    `));
 
-    result.data.allMarkdownRemark.edges.forEach((edge) => {
+  const docQuery = Promise.resolve(graphql(`
+      {
+        allMarkdownRemark(sort: { order: DESC, fields: [fields___path] }, limit: 1000) {
+          edges {
+            node {
+              fields {
+                path
+              }
+              excerpt(pruneLength: 250)
+              html
+              id
+            }
+          }
+        }
+      }
+    `));
+
+  return Promise.all([navQuery, docQuery]).then((values) => {
+    console.log(values);
+    const nav = values[0].data.allNavYaml.edges;
+    const docs = values[1].data.allMarkdownRemark.edges;
+    const parseNav = [];
+
+    nav.map((navItem) => {
+      const { path, title, items } = navItem.node;
+      if (items) {
+        items.map((subItem) => {
+          parseNav.push({
+            path: `docs/${path}/${subItem.id}`,
+            title: subItem.title,
+          });
+        });
+      }
+    });
+
+    docs.map((edge) => {
+      const path = edge.node.fields.path;
+      const index = parseNav.findIndex(element => element.path === path);
       createPage({
-        path: edge.node.fields.path,
+        path,
         component: docTemplate,
         context: {
-          path: edge.node.fields.path,
-        }, // additional data can be passed via context
+          path,
+          prev: undefined !== index && 0 < index && parseNav[index - 1],
+          next: undefined !== index && index < parseNav.length - 1 && parseNav[index + 1],
+        },
       });
     });
   });
