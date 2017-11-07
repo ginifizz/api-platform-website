@@ -35,9 +35,9 @@ class News extends Component {
           </h1>
           <div className="news__content">
             <div className="news__birds">
-              <img src={Bird} alt="bird" />
-              <img src={Bird} alt="bird" />
-              <img src={Bird} alt="bird" />
+              <img src={Bird} alt="bird" width="70" height="70" />
+              <img src={Bird} alt="bird" width="50" height="50" />
+              <img src={Bird} alt="bird" width="40" height="40" />
             </div>
             <div
               className="twitter__timeline"

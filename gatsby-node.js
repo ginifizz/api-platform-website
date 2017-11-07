@@ -6,7 +6,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
 
   const docTemplate = path.resolve('src/templates/doc.js');
 
-  const navQuery = Promise.resolve(graphql(`
+  const navQuery = graphql(`
       {
         allNavYaml {
           edges {
@@ -22,9 +22,9 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
           }
         }
       }
-    `));
+    `);
 
-  const docQuery = Promise.resolve(graphql(`
+  const docQuery = graphql(`
       {
         allMarkdownRemark(sort: { order: DESC, fields: [fields___path] }, limit: 1000) {
           edges {
@@ -39,10 +39,9 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
           }
         }
       }
-    `));
+    `);
 
   return Promise.all([navQuery, docQuery]).then((values) => {
-    console.log(values);
     const nav = values[0].data.allNavYaml.edges;
     const docs = values[1].data.allMarkdownRemark.edges;
     const parseNav = [];
@@ -54,6 +53,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
           parseNav.push({
             path: `docs/${path}/${subItem.id}`,
             title: subItem.title,
+            rootPath: title,
           });
         });
       }
@@ -62,13 +62,27 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
     docs.map((edge) => {
       const path = edge.node.fields.path;
       const index = parseNav.findIndex(element => element.path === path);
+      let prev, next, rootPath;
+
+      if(-1 !== index) {
+        prev = 0 < index && parseNav[index - 1];
+        next = index < parseNav.length - 1 && parseNav[index + 1];
+        rootPath = parseNav[index].rootPath;
+        if(prev && prev.rootPath !== rootPath) {
+          prev = {path: prev.path, title : `${prev.rootPath} - ${prev.title}`};
+        }
+        if(next && next.rootPath !== rootPath) {
+          next = {path: next.path, title : `${next.rootPath} - ${next.title}`};
+        }
+      }
+
       createPage({
         path,
         component: docTemplate,
         context: {
           path,
-          prev: undefined !== index && 0 < index && parseNav[index - 1],
-          next: undefined !== index && index < parseNav.length - 1 && parseNav[index + 1],
+          prev,
+          next,
         },
       });
     });

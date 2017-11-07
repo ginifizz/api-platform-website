@@ -6,12 +6,10 @@ import NavItem from 'components/docs/NavItem';
 class DocNav extends Component {
   componentWillMount() {
     const { location, history } = this.props;
-    const reg = /^\/docs\/(.*?)\/.*$/;
-    const matches = location.pathname.match(reg);
 
     this.setState(prevState => ({
       ...prevState,
-      currentItem: matches ? matches[1] : null,
+      currentItem: this.getItemByLocation(location),
     }));
     this.unlisten = history.listen(this.updateLocation);
   }
@@ -21,6 +19,22 @@ class DocNav extends Component {
       ...prevState,
       locationWithHash: { ...args },
     }));
+  };
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.location.pathname !== this.props.location.pathname) {
+      const { location } = nextProps;
+      this.setState(prevState => ({
+        ...prevState,
+        currentItem: this.getItemByLocation(location),
+      }));
+    }
+  }
+
+  getItemByLocation = (location) => {
+    const reg = /^\/docs\/(.*?)\/.*$/;
+    const matches = location.pathname.match(reg);
+    return matches ? matches[1] : null;
   }
 
   componentWillUnmount() {
@@ -66,6 +80,5 @@ DocNav.propTypes = {
 DocNav.defaultProps = {
   nav: [],
 };
-
 
 export default withRouter(DocNav);
