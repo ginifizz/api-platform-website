@@ -1,0 +1,17 @@
+.home__animation {
+  position: relative;
+  padding: 20px 0;
+  z-index: z("default");
+  background-color: $blue;
+  h2 {
+    color: $white;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .animation__step1 {
+    position: relative;
+    width: 700px;
+    height: 500px;
+    margin: 20px auto;
+  }
+}

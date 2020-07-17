@@ -10,12 +10,14 @@ import Expose from '../components/home/Expose';
 import Schema from '../components/home/Schema';
 import References from '../components/home/References';
 import Seo from '../components/home/Seo';
+import Animation from '../components/animation/Animation';
 import '../styles/main.scss';
 
 const IndexPage = ({ location }) => (
   <Layout location={location}>
     <div className="home">
       <Helmet title="REST and GraphQL framework on top of Symfony and React" />
+      <Animation />
       <Cover />
       <Ecosystem />
       <AllInOne />

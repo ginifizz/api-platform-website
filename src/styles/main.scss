@@ -30,9 +30,11 @@
 @import './objects/cards';
 @import './objects/grid';
 @import './objects/avatar';
+@import './objects/browser';
 
 // VENDOR
 @import './vendor/algolia';
+@import './vendor/termynal';
 
 // COMPONENTS
 @import './components/page';
